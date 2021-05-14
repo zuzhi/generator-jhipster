@@ -31,7 +31,7 @@
   }
 _%>
                     <div class="form-group">
-                        <label class="form-control-label" v-text="$t('<%= translationKey %>')" for="<%= entityFileName %>-<%= fieldName %>"><%= fieldNameHumanized %></label>
+                        <label class="form-label" v-text="$t('<%= translationKey %>')" for="<%= entityFileName %>-<%= fieldName %>"><%= fieldNameHumanized %></label>
   <%_ if (field.fieldIsEnum) { _%>
                         <select class="form-control" name="<%= fieldName %>" :class="{'valid': !$v.<%= entityInstance %>.<%= fieldName %>.$invalid, 'invalid': $v.<%= entityInstance %>.<%= fieldName %>.$invalid }" v-model="$v.<%= entityInstance %>.<%= fieldName %>.$model" id="<%= entityFileName %>-<%= fieldName %>" data-cy="<%= fieldName %>" <% if (field.fieldValidate === true && field.fieldValidateRules.includes('required')) { %> required<% } %>>
     <%_ const enumPrefix = frontendAppName + '.'+ fieldType;
@@ -170,7 +170,7 @@ _%>
   const translationKey = `${i18nKeyPrefix}.${relationshipName}`; _%>
   <%_ if (relationship.relationshipManyToOne || (relationship.relationshipOneToOne && ownerSide && relationship.otherEntityUser)) { _%>
                     <div class="form-group">
-                        <label class="form-control-label" v-text="$t('<%= translationKey %>')" for="<%= entityFileName %>-<%= relationshipName %>"><%= relationshipNameHumanized %></label>
+                        <label class="form-label" v-text="$t('<%= translationKey %>')" for="<%= entityFileName %>-<%= relationshipName %>"><%= relationshipNameHumanized %></label>
                         <select class="form-control" id="<%= entityFileName %>-<%= relationshipName %>" data-cy="<%= relationshipFieldName %>" name="<%= relationshipName %>" v-model="<%= entityInstance %>.<%=relationshipFieldName %>"<% if (relationshipRequired) { %> required<% } %>>
     <%_ if (!relationshipRequired) { _%>
                             <option v-bind:value="null"></option>
@@ -182,7 +182,7 @@ _%>
                     </div>
   <%_ } else if (relationship.relationshipOneToOne && ownerSide) { _%>
                     <div class="form-group">
-                        <label class="form-control-label" v-text="$t('<%= translationKey %>')" for="<%= entityFileName %>-<%= relationshipName %>"><%= relationshipNameHumanized %></label>
+                        <label class="form-label" v-text="$t('<%= translationKey %>')" for="<%= entityFileName %>-<%= relationshipName %>"><%= relationshipNameHumanized %></label>
                         <select class="form-control" id="<%= entityFileName %>-<%= relationshipName %>" data-cy="<%= relationshipFieldName %>" name="<%= relationshipName %>" v-model="<%= entityInstance %>.<%=relationshipFieldName %>"<% if (relationshipRequired) { %> required<% } %>>
                             <%_ if (!relationshipRequired) { _%>
                             <option v-bind:value="null"></option>
