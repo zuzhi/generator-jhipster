@@ -3,7 +3,7 @@
         <h2 id="page-heading" data-cy="<%= entityClass %>Heading">
             <span v-text="$t('<%= i18nKeyPrefix %>.home.title')" id="<%= entityFileName %>-heading"><%= entityClassPluralHumanized %></span>
             <div class="d-flex justify-content-end">
-                <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
+                <button class="btn btn-info me-2" v-on:click="handleSyncList" :disabled="isFetching">
                     <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon> <span v-text="$t('<%= i18nKeyPrefix %>.home.refreshListLabel')">Refresh List</span>
                 </button>
 <%_ if (!readOnly) { _%>
@@ -129,7 +129,7 @@
                     </td>
   <%_ } _%>
 <%_ } _%>
-                    <td class="text-right">
+                    <td class="text-end">
                         <div class="btn-group">
                             <router-link :to="{name: '<%= entityAngularName %>View', params: {<%= entityInstance %>Id: <%= entityInstance %>.id}}" custom v-slot="{ navigate }">
                                 <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">

@@ -68,7 +68,7 @@ _%>
     <%_ } _%>
     <%_ if (field.fieldTypeLocalDate) { _%>
                         <b-input-group class="mb-3">
-                            <b-input-group-prepend>
+                            <b-input-group-text>
                                 <b-form-datepicker
                                     aria-controls="<%= entityFileName %>-<%= fieldName %>"
                                     v-model="$v.<%= entityInstance %>.<%= fieldName %>.$model"
@@ -81,7 +81,7 @@ _%>
                                     close-button
                                 >
                                 </b-form-datepicker>
-                            </b-input-group-prepend>
+                            </b-input-group-text>
                             <b-form-input id="<%= entityFileName %>-<%= fieldName %>" data-cy="<%= fieldName %>" type="text" class="<%= fieldInputClass %>" name="<%= fieldName %>"  :class="{'valid': !$v.<%= entityInstance %>.<%= fieldName %>.$invalid, 'invalid': $v.<%= entityInstance %>.<%= fieldName %>.$invalid }"
                             v-model="$v.<%= entityInstance %>.<%= fieldName %>.$model" <% if (field.fieldValidate && field.fieldValidationRequired) { %> required<% } %> />
                         </b-input-group>
