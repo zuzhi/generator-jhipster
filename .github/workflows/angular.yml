@@ -18,6 +18,10 @@
 #
 
 name: Angular
+concurrency:
+  # Group PRs by head_ref, push to main branch by commit id, and others branch by ref.
+  group: angular-${{ github.head_ref || (github.ref == 'refs/heads/main' && github.sha) || github.ref }}
+  cancel-in-progress: true
 on:
   push:
     branches-ignore:
@@ -197,7 +201,7 @@ jobs:
         run: |
           echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
       - name: 'SETUP: load npm cache'
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: |
             ~/.npm
@@ -208,7 +212,7 @@ jobs:
             ${{ runner.os }}-node-${{ steps.get-date.outputs.date }}-
             ${{ runner.os }}-node-${{ steps.get-date.outputs.date }}
       - name: 'SETUP: load maven cache'
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ steps.get-date.outputs.date }}-${{ hashFiles('generator-jhipster/**/pom.xml.ejs') }}
@@ -217,7 +221,7 @@ jobs:
             ${{ runner.os }}-maven-${{ steps.get-date.outputs.date }}
       - name: 'SETUP: load gradle cache'
         if: contains(matrix.app-type, 'gradle')
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: |
             ~/.gradle/caches

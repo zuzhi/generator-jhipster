@@ -48,10 +48,10 @@ preserve: ['XSRF-TOKEN','SESSION', 'JSESSIONID']
 <%_ } _%>
 <%_ if (clientFrameworkReact || clientFrameworkVue) { _%>
 
-Cypress.on('uncaught:exception', (err, runnable, promise) => {
-  // when the exception originated from an unhandled promise
-  // rejection, the promise is provided as a third argument
-  // you can turn off failing the test in this case
+// https://docs.cypress.io/api/events/catalog-of-events#Uncaught-Exceptions
+Cypress.on('uncaught:exception', (err, runnable) => {
+  // returning false here prevents Cypress from
+  // failing the test
   if (promise) {
     // returning false here prevents Cypress from
     // failing the test
