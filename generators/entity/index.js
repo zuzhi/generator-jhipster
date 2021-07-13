@@ -195,11 +195,19 @@ class EntityGenerator extends BaseBlueprintGenerator {
       /* Use need microservice path to load the entity file */
       askForMicroserviceJson: prompts.askForMicroserviceJson,
 
+      loadSharedConfig() {
+        this.loadAppConfig(undefined, this.context);
+        this.loadClientConfig(undefined, this.context);
+        this.loadTranslationConfig(undefined, this.context);
+        // Try to load server config from microservice side, falling back to the app config.
+        this.loadServerConfig(_.defaults({}, this.microserviceConfig, this.jhipsterConfig, defaultConfig), this.context);
+      },
+
       setupMicroServiceEntity() {
         const context = this.context;
 
         if (this.jhipsterConfig.applicationType === MICROSERVICE) {
-          context.skipClient = true;
+          context.skipClient = context.skipClient || !this.jhipsterConfig.microfrontend;
           context.microserviceName = this.entityConfig.microserviceName = this.jhipsterConfig.baseName;
           if (!this.entityConfig.clientRootFolder) {
             context.clientRootFolder = this.entityConfig.clientRootFolder = this.entityConfig.microserviceName;
@@ -228,14 +236,6 @@ class EntityGenerator extends BaseBlueprintGenerator {
               : this.entityConfig.microserviceName;
           }
         }
-      },
-
-      loadSharedConfig() {
-        this.loadAppConfig(undefined, this.context);
-        this.loadClientConfig(undefined, this.context);
-        this.loadTranslationConfig(undefined, this.context);
-        // Try to load server config from microservice side, falling back to the app config.
-        this.loadServerConfig(_.defaults({}, this.microserviceConfig, this.jhipsterConfig, defaultConfig), this.context);
       },
 
       loadOptions() {
@@ -495,6 +495,7 @@ class EntityGenerator extends BaseBlueprintGenerator {
         this.loadDerivedAppConfig(this.context);
         this.loadDerivedClientConfig(this.context);
         this.loadDerivedServerConfig(this.context);
+        this.loadDerivedPlatformConfig(this.context);
         loadRequiredConfigIntoEntity(this.context, this.jhipsterConfig);
         if (this.context.fields) {
           this.context.fields
@@ -528,7 +529,7 @@ class EntityGenerator extends BaseBlueprintGenerator {
           });
         }
 
-        if (!context.skipClient) {
+        if (!context.skipClient || this.jhipsterConfig.applicationType === GATEWAY) {
           this.composeWithJHipster(GENERATOR_ENTITY_CLIENT, this.arguments, {
             context,
             skipInstall: this.options.skipInstall,
@@ -557,7 +558,7 @@ class EntityGenerator extends BaseBlueprintGenerator {
           const otherEntityName = this._.upperFirst(relationship.otherEntityName);
           const otherEntity = this.configOptions.sharedEntities[otherEntityName];
           if (!otherEntity) {
-            throw new Error(`Error looking for otherEntity ${otherEntityName}`);
+            throw new Error(`Error looking for otherEntity ${otherEntityName} at ${Object.keys(this.configOptions.sharedEntities)}`);
           }
           relationship.otherEntity = otherEntity;
           otherEntity.otherRelationships = otherEntity.otherRelationships || [];
@@ -967,9 +968,6 @@ class EntityGenerator extends BaseBlueprintGenerator {
   _setupEntityOptions(generator, context = generator, dest = context) {
     dest.regenerate = context.options.regenerate;
 
-    if (context.options.fluentMethods !== undefined) {
-      this.entityConfig.fluentMethods = context.options.fluentMethods;
-    }
     if (context.options.skipCheckLengthOfIdentifier !== undefined) {
       this.entityConfig.skipCheckLengthOfIdentifier = context.options.skipCheckLengthOfIdentifier;
     }

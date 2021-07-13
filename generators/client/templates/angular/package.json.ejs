@@ -87,11 +87,9 @@
 <%_ } _%>
 <%_ if (cypressTests) { _%>
     "cypress": "<%= dependabotPackageJson.devDependencies['cypress'] %>",
-<%_ if (authenticationType === 'oauth2') { _%>
-    "puppeteer": "<%= dependabotPackageJson.devDependencies['puppeteer'] %>",
-<%_ } _%>
 <%_ } _%>
 <%_ if (enableTranslation) { _%>
+    "folder-hash": "<%= dependabotPackageJson.devDependencies['folder-hash'] %>",
     "merge-jsons-webpack-plugin": "<%= dependabotPackageJson.devDependencies['merge-jsons-webpack-plugin'] %>",
 <%_ } _%>
 <%_ if (!skipServer) { _%>
@@ -126,6 +124,7 @@
     "prettier": "<%= dependabotPackageJson.devDependencies['prettier'] %>",
     "prettier-plugin-packagejson": "<%= dependabotPackageJson.devDependencies['prettier-plugin-packagejson'] %>",
     "rimraf": "<%= dependabotPackageJson.devDependencies['rimraf'] %>",
+    "ts-jest": "<%= dependabotPackageJson.devDependencies['ts-jest'] %>",
     "typescript": "<%= dependabotPackageJson.devDependencies['typescript'] %>",
     "webpack-bundle-analyzer": "<%= dependabotPackageJson.devDependencies['webpack-bundle-analyzer'] %>",
     "webpack-merge": "<%= dependabotPackageJson.devDependencies['webpack-merge'] %>",
@@ -165,7 +164,7 @@
     "e2e:update-webdriver": "webdriver-manager update --gecko false",
     <%_ } _%>
     "jest": "jest --coverage --logHeapUsage --maxWorkers=2 --config jest.conf.js",
-    "start": "ng serve --hmr",
+    "start": "ng serve<% if (!microfrontend) { %> --hmr<% } %>",
     "start-tls": "<%= clientPackageManager %> run webapp:dev -- --env.tls",
     <%_ if (skipServer) { _%>
     "sonar": "sonar-scanner",

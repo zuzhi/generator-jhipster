@@ -13,6 +13,7 @@ Object {
     \\"dockerRepositoryName\\": \\"jhipster\\",
     \\"dockerPushCommand\\": \\"docker push\\",
     \\"kubernetesNamespace\\": \\"default\\",
+    \\"kubernetesServiceType\\": \\"LoadBalancer\\",
     \\"generatorType\\": \\"helm\\",
     \\"ingressDomain\\": \\"\\",
     \\"monitoring\\": \\"no\\",
@@ -239,7 +240,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
         - name: jhipster-registry
-          image: jhipster/jhipster-registry:v6.7.1
+          image: jhipster/jhipster-registry:v6.8.0
           ports:
             - containerPort: 8761
           env:
@@ -935,6 +936,7 @@ Object {
     \\"dockerRepositoryName\\": \\"jhipster\\",
     \\"dockerPushCommand\\": \\"docker push\\",
     \\"kubernetesNamespace\\": \\"default\\",
+    \\"kubernetesServiceType\\": \\"LoadBalancer\\",
     \\"generatorType\\": \\"helm\\",
     \\"ingressDomain\\": \\"example.com\\",
     \\"monitoring\\": \\"no\\",
@@ -1159,7 +1161,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
         - name: jhipster-registry
-          image: jhipster/jhipster-registry:v6.7.1
+          image: jhipster/jhipster-registry:v6.8.0
           ports:
             - containerPort: 8761
           env:
@@ -1615,6 +1617,7 @@ Object {
     \\"dockerRepositoryName\\": \\"jhipster\\",
     \\"dockerPushCommand\\": \\"docker push\\",
     \\"kubernetesNamespace\\": \\"default\\",
+    \\"kubernetesServiceType\\": \\"LoadBalancer\\",
     \\"generatorType\\": \\"helm\\",
     \\"ingressDomain\\": \\"\\",
     \\"monitoring\\": \\"no\\",
@@ -1841,7 +1844,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
         - name: jhipster-registry
-          image: jhipster/jhipster-registry:v6.7.1
+          image: jhipster/jhipster-registry:v6.8.0
           ports:
             - containerPort: 8761
           env:
@@ -2506,6 +2509,7 @@ Object {
     \\"dockerRepositoryName\\": \\"jhipster\\",
     \\"dockerPushCommand\\": \\"docker push\\",
     \\"kubernetesNamespace\\": \\"default\\",
+    \\"kubernetesServiceType\\": \\"LoadBalancer\\",
     \\"generatorType\\": \\"helm\\",
     \\"ingressDomain\\": \\"example.com\\",
     \\"monitoring\\": \\"no\\",
@@ -2730,7 +2734,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
         - name: jhipster-registry
-          image: jhipster/jhipster-registry:v6.7.1
+          image: jhipster/jhipster-registry:v6.8.0
           ports:
             - containerPort: 8761
           env:
@@ -3192,6 +3196,7 @@ Object {
     \\"dockerRepositoryName\\": \\"jhipster\\",
     \\"dockerPushCommand\\": \\"docker push\\",
     \\"kubernetesNamespace\\": \\"default\\",
+    \\"kubernetesServiceType\\": \\"LoadBalancer\\",
     \\"generatorType\\": \\"helm\\",
     \\"ingressDomain\\": \\"\\",
     \\"monitoring\\": \\"no\\",
@@ -3424,7 +3429,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
         - name: jhipster-registry
-          image: jhipster/jhipster-registry:v6.7.1
+          image: jhipster/jhipster-registry:v6.8.0
           ports:
             - containerPort: 8761
           env:
@@ -4815,6 +4820,7 @@ Object {
     \\"dockerRepositoryName\\": \\"jhipster\\",
     \\"dockerPushCommand\\": \\"docker push\\",
     \\"kubernetesNamespace\\": \\"mynamespace\\",
+    \\"kubernetesServiceType\\": \\"LoadBalancer\\",
     \\"generatorType\\": \\"helm\\",
     \\"ingressDomain\\": \\"\\",
     \\"monitoring\\": \\"prometheus\\",
@@ -5124,7 +5130,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
         - name: jhipster-registry
-          image: jhipster/jhipster-registry:v6.7.1
+          image: jhipster/jhipster-registry:v6.8.0
           ports:
             - containerPort: 8761
           env:
@@ -7837,6 +7843,7 @@ Object {
     \\"dockerRepositoryName\\": \\"jhipster\\",
     \\"dockerPushCommand\\": \\"docker push\\",
     \\"kubernetesNamespace\\": \\"mynamespace\\",
+    \\"kubernetesServiceType\\": \\"LoadBalancer\\",
     \\"generatorType\\": \\"helm\\",
     \\"ingressDomain\\": \\"\\",
     \\"monitoring\\": \\"no\\",
@@ -8061,7 +8068,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
         - name: jhipster-registry
-          image: jhipster/jhipster-registry:v6.7.1
+          image: jhipster/jhipster-registry:v6.8.0
           ports:
             - containerPort: 8761
           env:
@@ -8473,6 +8480,7 @@ Object {
     \\"dockerRepositoryName\\": \\"jhipsterrepository\\",
     \\"dockerPushCommand\\": \\"docker push\\",
     \\"kubernetesNamespace\\": \\"jhipsternamespace\\",
+    \\"kubernetesServiceType\\": \\"LoadBalancer\\",
     \\"generatorType\\": \\"helm\\",
     \\"ingressDomain\\": \\"\\",
     \\"monitoring\\": \\"no\\",
@@ -8697,7 +8705,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
         - name: jhipster-registry
-          image: jhipster/jhipster-registry:v6.7.1
+          image: jhipster/jhipster-registry:v6.8.0
           ports:
             - containerPort: 8761
           env:
@@ -9162,6 +9170,7 @@ Object {
     \\"dockerRepositoryName\\": \\"jhipster\\",
     \\"dockerPushCommand\\": \\"docker push\\",
     \\"kubernetesNamespace\\": \\"default\\",
+    \\"kubernetesServiceType\\": \\"LoadBalancer\\",
     \\"generatorType\\": \\"k8s\\",
     \\"ingressDomain\\": \\"\\",
     \\"monitoring\\": \\"no\\",
@@ -9412,7 +9421,7 @@ spec:
           emptyDir: {}
       containers:
         - name: mysql
-          image: mysql:8.0.23
+          image: mysql:8.0.25
           env:
             - name: MYSQL_ALLOW_EMPTY_PASSWORD
               value: \\"yes\\"
@@ -9695,7 +9704,7 @@ spec:
           emptyDir: {}
       containers:
         - name: postgres
-          image: postgres:13.2
+          image: postgres:13.3
           env:
             - name: POSTGRES_USER
               value: mspsql
@@ -9950,7 +9959,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
         - name: jhipster-registry
-          image: jhipster/jhipster-registry:v6.7.1
+          image: jhipster/jhipster-registry:v6.8.0
           ports:
             - containerPort: 8761
           env:
@@ -10017,6 +10026,7 @@ Object {
     \\"dockerRepositoryName\\": \\"jhipster\\",
     \\"dockerPushCommand\\": \\"docker push\\",
     \\"kubernetesNamespace\\": \\"default\\",
+    \\"kubernetesServiceType\\": \\"LoadBalancer\\",
     \\"generatorType\\": \\"k8s\\",
     \\"ingressDomain\\": \\"example.com\\",
     \\"monitoring\\": \\"no\\",
@@ -10291,7 +10301,7 @@ spec:
           emptyDir: {}
       containers:
         - name: mysql
-          image: mysql:8.0.23
+          image: mysql:8.0.25
           env:
             - name: MYSQL_ALLOW_EMPTY_PASSWORD
               value: \\"yes\\"
@@ -10565,7 +10575,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
         - name: jhipster-registry
-          image: jhipster/jhipster-registry:v6.7.1
+          image: jhipster/jhipster-registry:v6.8.0
           ports:
             - containerPort: 8761
           env:
@@ -10632,6 +10642,7 @@ Object {
     \\"dockerRepositoryName\\": \\"jhipster\\",
     \\"dockerPushCommand\\": \\"docker push\\",
     \\"kubernetesNamespace\\": \\"default\\",
+    \\"kubernetesServiceType\\": \\"LoadBalancer\\",
     \\"generatorType\\": \\"k8s\\",
     \\"ingressDomain\\": \\"\\",
     \\"monitoring\\": \\"no\\",
@@ -10908,7 +10919,7 @@ spec:
           emptyDir: {}
       containers:
         - name: mysql
-          image: mysql:8.0.23
+          image: mysql:8.0.25
           env:
             - name: MYSQL_ALLOW_EMPTY_PASSWORD
               value: \\"yes\\"
@@ -11134,7 +11145,7 @@ spec:
           emptyDir: {}
       containers:
         - name: mysql
-          image: mysql:8.0.23
+          image: mysql:8.0.25
           env:
             - name: MYSQL_ALLOW_EMPTY_PASSWORD
               value: \\"yes\\"
@@ -11381,7 +11392,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
         - name: jhipster-registry
-          image: jhipster/jhipster-registry:v6.7.1
+          image: jhipster/jhipster-registry:v6.8.0
           ports:
             - containerPort: 8761
           env:
@@ -11448,6 +11459,7 @@ Object {
     \\"dockerRepositoryName\\": \\"jhipster\\",
     \\"dockerPushCommand\\": \\"docker push\\",
     \\"kubernetesNamespace\\": \\"default\\",
+    \\"kubernetesServiceType\\": \\"LoadBalancer\\",
     \\"generatorType\\": \\"k8s\\",
     \\"ingressDomain\\": \\"example.com\\",
     \\"monitoring\\": \\"no\\",
@@ -11722,7 +11734,7 @@ spec:
           emptyDir: {}
       containers:
         - name: mysql
-          image: mysql:8.0.23
+          image: mysql:8.0.25
           env:
             - name: MYSQL_ALLOW_EMPTY_PASSWORD
               value: \\"yes\\"
@@ -11996,7 +12008,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
         - name: jhipster-registry
-          image: jhipster/jhipster-registry:v6.7.1
+          image: jhipster/jhipster-registry:v6.8.0
           ports:
             - containerPort: 8761
           env:
@@ -12070,6 +12082,7 @@ Object {
     \\"dockerRepositoryName\\": \\"jhipster\\",
     \\"dockerPushCommand\\": \\"docker push\\",
     \\"kubernetesNamespace\\": \\"default\\",
+    \\"kubernetesServiceType\\": \\"LoadBalancer\\",
     \\"generatorType\\": \\"k8s\\",
     \\"ingressDomain\\": \\"\\",
     \\"monitoring\\": \\"no\\",
@@ -12354,7 +12367,7 @@ spec:
           emptyDir: {}
       containers:
         - name: mysql
-          image: mysql:8.0.23
+          image: mysql:8.0.25
           env:
             - name: MYSQL_ALLOW_EMPTY_PASSWORD
               value: \\"yes\\"
@@ -12607,7 +12620,7 @@ spec:
           emptyDir: {}
       containers:
         - name: mariadb
-          image: mariadb:10.5.9
+          image: mariadb:10.6.1
           env:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
@@ -12993,7 +13006,7 @@ spec:
             - name: workdir
               mountPath: /work-dir
         - name: boot
-          image: mongo:4.4.4
+          image: mongo:4.4.6
           command:
             - /work-dir/peer-finder
           args:
@@ -13023,7 +13036,7 @@ spec:
               mountPath: /data/db
       containers:
         - name: mongodb
-          image: mongo:4.4.4
+          image: mongo:4.4.6
           imagePullPolicy: \\"IfNotPresent\\"
           env:
             - name: POD_NAMESPACE
@@ -13288,7 +13301,7 @@ spec:
           emptyDir: {}
       containers:
         - name: mysql
-          image: mcr.microsoft.com/mssql/server:2019-CU9-ubuntu-16.04
+          image: mcr.microsoft.com/mssql/server:2019-CU11-ubuntu-20.04
           env:
             - name: MSSQL_PID
               value: \\"Express\\"
@@ -13492,7 +13505,7 @@ spec:
           emptyDir: {}
       containers:
         - name: mysql
-          image: mysql:8.0.23
+          image: mysql:8.0.25
           env:
             - name: MYSQL_ALLOW_EMPTY_PASSWORD
               value: \\"yes\\"
@@ -13775,7 +13788,7 @@ spec:
           emptyDir: {}
       containers:
         - name: postgres
-          image: postgres:13.2
+          image: postgres:13.3
           env:
             - name: POSTGRES_USER
               value: mspsql
@@ -14030,7 +14043,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
         - name: jhipster-registry
-          image: jhipster/jhipster-registry:v6.7.1
+          image: jhipster/jhipster-registry:v6.8.0
           ports:
             - containerPort: 8761
           env:
@@ -14097,6 +14110,7 @@ Object {
     \\"dockerRepositoryName\\": \\"jhipster\\",
     \\"dockerPushCommand\\": \\"docker push\\",
     \\"kubernetesNamespace\\": \\"mynamespace\\",
+    \\"kubernetesServiceType\\": \\"LoadBalancer\\",
     \\"generatorType\\": \\"k8s\\",
     \\"ingressDomain\\": \\"\\",
     \\"monitoring\\": \\"prometheus\\",
@@ -16723,7 +16737,7 @@ spec:
     spec:
       containers:
         - name: jhipster-grafana
-          image: grafana/grafana:7.5.2
+          image: grafana/grafana:8.0.1
           ports:
             - containerPort: 3000
               name: http
@@ -17014,7 +17028,7 @@ spec:
           emptyDir: {}
       containers:
         - name: mysql
-          image: mysql:8.0.23
+          image: mysql:8.0.25
           env:
             - name: MYSQL_ALLOW_EMPTY_PASSWORD
               value: \\"yes\\"
@@ -17289,7 +17303,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
         - name: jhipster-registry
-          image: jhipster/jhipster-registry:v6.7.1
+          image: jhipster/jhipster-registry:v6.8.0
           ports:
             - containerPort: 8761
           env:
@@ -17356,6 +17370,7 @@ Object {
     \\"dockerRepositoryName\\": \\"jhipster\\",
     \\"dockerPushCommand\\": \\"docker push\\",
     \\"kubernetesNamespace\\": \\"mynamespace\\",
+    \\"kubernetesServiceType\\": \\"LoadBalancer\\",
     \\"generatorType\\": \\"k8s\\",
     \\"ingressDomain\\": \\"\\",
     \\"monitoring\\": \\"no\\",
@@ -17604,7 +17619,7 @@ spec:
           emptyDir: {}
       containers:
         - name: mysql
-          image: mysql:8.0.23
+          image: mysql:8.0.25
           env:
             - name: MYSQL_ALLOW_EMPTY_PASSWORD
               value: \\"yes\\"
@@ -17859,7 +17874,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
         - name: jhipster-registry
-          image: jhipster/jhipster-registry:v6.7.1
+          image: jhipster/jhipster-registry:v6.8.0
           ports:
             - containerPort: 8761
           env:
@@ -17926,6 +17941,7 @@ Object {
     \\"dockerRepositoryName\\": \\"jhipsterrepository\\",
     \\"dockerPushCommand\\": \\"docker push\\",
     \\"kubernetesNamespace\\": \\"jhipsternamespace\\",
+    \\"kubernetesServiceType\\": \\"LoadBalancer\\",
     \\"generatorType\\": \\"k8s\\",
     \\"ingressDomain\\": \\"\\",
     \\"monitoring\\": \\"no\\",
@@ -18200,7 +18216,7 @@ spec:
           emptyDir: {}
       containers:
         - name: mysql
-          image: mysql:8.0.23
+          image: mysql:8.0.25
           env:
             - name: MYSQL_ALLOW_EMPTY_PASSWORD
               value: \\"yes\\"
@@ -18483,7 +18499,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
         - name: jhipster-registry
-          image: jhipster/jhipster-registry:v6.7.1
+          image: jhipster/jhipster-registry:v6.8.0
           ports:
             - containerPort: 8761
           env:

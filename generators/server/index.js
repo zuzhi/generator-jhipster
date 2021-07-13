@@ -63,7 +63,7 @@ module.exports = class JHipsterServerGenerator extends BaseBlueprintGenerator {
           }
           const gradle = this.jhipsterConfig.buildTool === GRADLE;
           const command = gradle ? './gradlew' : './npmw';
-          const args = gradle ? ['npm_install'] : ['install', '--no-audit'];
+          const args = gradle ? ['npmInstall'] : ['install'];
 
           const failureCallback = error => {
             this.log(chalk.red(`Error executing '${command} ${args.join(' ')}', execute it yourself. (${error.shortMessage})`));
@@ -149,6 +149,8 @@ module.exports = class JHipsterServerGenerator extends BaseBlueprintGenerator {
         this.JACKSON_DATABIND_NULLABLE_VERSION = constants.JACKSON_DATABIND_NULLABLE_VERSION;
 
         this.ANGULAR = constants.SUPPORTED_CLIENT_FRAMEWORKS.ANGULAR;
+        this.VUE = constants.SUPPORTED_CLIENT_FRAMEWORKS.VUE;
+        this.REACT = constants.SUPPORTED_CLIENT_FRAMEWORKS.REACT;
 
         this.packagejs = packagejs;
       },
@@ -210,6 +212,11 @@ module.exports = class JHipsterServerGenerator extends BaseBlueprintGenerator {
   // Public API method used by the getter and also by Blueprints
   _configuring() {
     return {
+      configServerPort() {
+        if (!this.jhipsterConfig.serverPort && this.jhipsterConfig.applicationIndex) {
+          this.jhipsterConfig.serverPort = 8080 + this.jhipsterConfig.applicationIndex;
+        }
+      },
       validateConfig() {
         this._validateServerConfiguration();
       },
@@ -246,8 +253,12 @@ module.exports = class JHipsterServerGenerator extends BaseBlueprintGenerator {
     return {
       loadSharedConfig() {
         this.loadAppConfig();
+        this.loadDerivedAppConfig();
         this.loadClientConfig();
+        this.loadDerivedClientConfig();
         this.loadServerConfig();
+        this.loadDerivedServerConfig();
+        this.loadPlatformConfig();
         this.loadTranslationConfig();
       },
     };
@@ -456,6 +467,7 @@ module.exports = class JHipsterServerGenerator extends BaseBlueprintGenerator {
             'java:docker': './mvnw -ntp verify -DskipTests jib:dockerBuild',
             'backend:unit:test': `./mvnw -ntp -P-webapp verify --batch-mode ${javaCommonLog} ${javaTestLog}`,
             'backend:build-cache': './mvnw dependency:go-offline',
+            'backend:debug': './mvnw -Dspring-boot.run.jvmArguments="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000"',
           });
         } else if (buildTool === 'gradle') {
           const excludeWebapp = this.jhipsterConfig.skipClient ? '' : '-x webapp';

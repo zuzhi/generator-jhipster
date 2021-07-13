@@ -62,6 +62,12 @@ const defaultCommands = {
   info: {
     desc: 'Display information about your current project and system',
   },
+  init: {
+    desc: 'Init project (alpha)',
+  },
+  'java-package-name': {
+    desc: 'Configure Java package name (alpha)',
+  },
   jdl: {
     alias: 'import-jdl',
     argument: ['[jdlFiles...]'],
@@ -107,6 +113,11 @@ const defaultCommands = {
         option: '--unidirectional-relationships',
         desc: 'Generate unidirectional relationships',
       },
+      {
+        option: '--force-no-filtering',
+        desc: "Don't filter jdl entities",
+        default: false,
+      },
     ],
     desc: `Create entities from the JDL file/URL/content passed in argument.
     Use the '--fork' or '--interactive' flag to change the process forking behavior when generating multiple applications.`,
@@ -145,11 +156,17 @@ const defaultCommands = {
   languages: {
     desc: 'Select languages from a list of available languages. The i18n files will be copied to the /webapp/i18n folder',
   },
+  maven: {
+    desc: 'Create Maven project (alpha)',
+  },
   openshift: {
     desc: 'Deploy the current application to OpenShift',
   },
   page: {
     desc: 'Create a new page. (Supports vue clients)',
+  },
+  'project-name': {
+    desc: 'Configure project name (alpha)',
   },
   run: {
     desc: 'Run a module or custom generator',

@@ -143,6 +143,9 @@ module.exports = class extends BaseDockerGenerator {
           const yamlConfig = yaml.services[`${lowercaseBaseName}-app`];
           if (appConfig.applicationType === GATEWAY || appConfig.applicationType === MONOLITH) {
             this.keycloakRedirectUris += `"http://localhost:${portIndex}/*", "https://localhost:${portIndex}/*", `;
+            if (appConfig.devServerPort !== undefined) {
+              this.keycloakRedirectUris += `"http://localhost:${appConfig.devServerPort}/*", `;
+            }
             // Split ports by ":" and take last 2 elements to skip the hostname/IP if present
             const ports = yamlConfig.ports[0].split(':').slice(-2);
             ports[0] = portIndex;
@@ -263,6 +266,19 @@ module.exports = class extends BaseDockerGenerator {
   get preparing() {
     if (useBlueprints) return;
     return this._preparing();
+  }
+
+  _loading() {
+    return {
+      loadPlatformConfig() {
+        this.loadDeploymentConfig(this);
+      },
+    };
+  }
+
+  get loading() {
+    if (useBlueprints) return;
+    return this._loading();
   }
 
   _writing() {

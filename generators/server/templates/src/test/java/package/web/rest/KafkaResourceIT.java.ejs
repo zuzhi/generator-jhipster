@@ -36,6 +36,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.test.web.reactive.server.WebTestClient;
 <%_ } _%>
 import org.testcontainers.containers.KafkaContainer;
+import org.testcontainers.utility.DockerImageName;
 
 import java.time.Duration;
 import java.util.Collections;
@@ -72,7 +73,7 @@ class <%= upperFirstCamelCase(baseName) %>KafkaResourceIT {
     private static void startTestcontainer() {
         // TODO: withNetwork will need to be removed soon
         // See discussion at https://github.com/jhipster/generator-jhipster/issues/11544#issuecomment-609065206
-        kafkaContainer = new KafkaContainer("<%= KAFKA_VERSION %>").withNetwork(null);
+        kafkaContainer = new KafkaContainer(DockerImageName.parse("<%= DOCKER_KAFKA %>")).withNetwork(null);
         kafkaContainer.start();
     }
 
@@ -102,7 +103,7 @@ class <%= upperFirstCamelCase(baseName) %>KafkaResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON));
         <%_ } else { _%>
-        client.post().uri("/api/jhipster-kafka/publish/topic-produce?message=value-produce")
+        client.post().uri("/api/<%= dasherizedBaseName %>-kafka/publish/topic-produce?message=value-produce")
             .exchange()
             .expectStatus().isOk()
             .expectHeader().contentType(MediaType.APPLICATION_JSON);
@@ -140,7 +141,7 @@ class <%= upperFirstCamelCase(baseName) %>KafkaResourceIT {
         }
         fail("Expected content data:value-consume not received");
         <%_ } else { _%>
-        String value = client.get().uri("/api/jhipster-kafka/consume?topic=topic-consume")
+        String value = client.get().uri("/api/<%= dasherizedBaseName %>-kafka/consume?topic=topic-consume")
             .accept(MediaType.TEXT_EVENT_STREAM)
             .exchange()
             .expectStatus().isOk()
@@ -170,4 +171,3 @@ class <%= upperFirstCamelCase(baseName) %>KafkaResourceIT {
         return consumerProps;
     }
 }
-
